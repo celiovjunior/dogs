@@ -15,7 +15,7 @@ export default function useForm(type) {
         if (type === false) return true
 
         if (value.length === 0) {
-            setError('Fill a new value');
+            setError('Fill a value');
             return false;
         } else if (types[type] && !types[type].regex.test(value)) {
             setError(types[type].message)
@@ -23,12 +23,14 @@ export default function useForm(type) {
             return false;
         } else {
             setError(null);
+            
             return true;
         }
     }
 
     function onChange({ target }) {
-        setValue(target.value)
+        if (error) validate(target.value);
+        setValue(target.value);
     }
 
     return {

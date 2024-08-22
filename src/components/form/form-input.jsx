@@ -36,7 +36,7 @@ const ErrorMsg = styled.p`
 `
 
 // eslint-disable-next-line react/prop-types
-export function FormInput({ label, type, name, value, onChange }) {
+export function FormInput({ label, type, name, value, onChange, error, onBlur }) {
     return(
         <Wrapper>
             <Label htmlFor={name}>{label}</Label>
@@ -45,9 +45,10 @@ export function FormInput({ label, type, name, value, onChange }) {
              name={name} 
              type={type} 
              value={value} 
-             onChange={onChange} 
+             onChange={onChange}
+             onBlur={onBlur}
             />
-            <ErrorMsg>Error</ErrorMsg>
+            {error && <ErrorMsg>{error}</ErrorMsg>}
         </Wrapper>
     )
 }
