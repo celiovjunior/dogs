@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const HeaderTag = styled.header`
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-    padding: 0.5em;
     position: fixed;
     width: 100%;
     z-index: 100;
@@ -17,6 +16,7 @@ const NavTag = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 4rem;
 `
 
 const StyledLink = styled(Link)`

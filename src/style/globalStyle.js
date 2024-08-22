@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         --type-second: 'Spectral', Georgia;
 
         margin: 0px;
+        padding-top: 4rem;
         color: #333;
         font-family: var(--type-first);
     }
