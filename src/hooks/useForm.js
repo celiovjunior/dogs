@@ -3,7 +3,7 @@ import { useState } from "react";
 const types = {
     email: {
         regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-        message: "Please enter a valid email address",
+        message: "Please enter a valid email address.",
     }
 }
 
@@ -15,15 +15,13 @@ export default function useForm(type) {
         if (type === false) return true
 
         if (value.length === 0) {
-            setError('Fill a value');
+            setError('Fill a value.');
             return false;
         } else if (types[type] && !types[type].regex.test(value)) {
             setError(types[type].message)
-
             return false;
         } else {
             setError(null);
-            
             return true;
         }
     }
