@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import dogsLogo from "../assets/dogs.svg"
 import userSvg from "../assets/usuario.svg"
 import styled from "styled-components";
+import { UserContext } from "../contexts/user-context";
+import { useContext } from "react";
 
 const HeaderTag = styled.header`
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
@@ -36,13 +38,25 @@ const ImgTag = styled.img`
 `
 
 export function Header() {
+    const { data, userLogout } = useContext(UserContext)
+
     return (
         <HeaderTag>
             <NavTag className="container">
                 <Link to="/" aria-label="Dogs - Home">
                     <ImgTag src={dogsLogo} alt="SVG Logo Image" />
                 </Link>
-                <StyledLink to="/login">Login / Sign Up <img src={userSvg} alt="User link" /></StyledLink>
+                {data ? (
+                    <StyledLink to="/account">
+                        {data.name}
+                        <img src={userSvg} alt="User link" />
+                        <button onClick={userLogout}>Logout</button>
+                    </StyledLink>
+                ) : 
+                <StyledLink to="/login">
+                    Login / Sign Up
+                    <img src={userSvg} alt="User link" />
+                </StyledLink>}
             </NavTag>
         </HeaderTag>
     )
