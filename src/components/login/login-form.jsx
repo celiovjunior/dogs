@@ -20,8 +20,8 @@ export function LoginForm() {
     }
 
     return (
-        <section>
-            <h1>Login</h1>
+        <section className="animeLeft">
+            <h1 className="title">Login</h1>
             <form action="" onSubmit={handleSubmit}>
                 <FormInput label="User" type="text" name="username" {...username} />
                 <FormInput label="Password" type="password" name="password" {...password} />
