@@ -4,6 +4,12 @@ import { FormButton } from "../form/form-button";
 import useForm from "../../hooks/useForm";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user-context";
+import { Error } from "../error";
+import styled from "styled-components";
+
+const FormContainer = styled.section`
+
+`
 
 export function LoginForm() {
     const username = useForm('email')
@@ -20,19 +26,20 @@ export function LoginForm() {
     }
 
     return (
-        <section className="animeLeft">
+        <FormContainer className="animeLeft">
             <h1 className="title">Login</h1>
             <form action="" onSubmit={handleSubmit}>
                 <FormInput label="User" type="text" name="username" {...username} />
                 <FormInput label="Password" type="password" name="password" {...password} />
                 
-                {loading ? 
-                <FormButton disabled>Loading</FormButton> : 
-                <FormButton>Login</FormButton>}
+                {loading 
+                ? <FormButton disabled>Loading</FormButton>
+                : <FormButton>Login</FormButton>}
                 
-                {error && <p>{error}</p>}
+                <Error error={error} />
             </form>
+            <Link to="/login/lost-account">Can&apos;t remember the password</Link>
             <Link to="/login/create">Sign up</Link>
-        </section>
+        </FormContainer>
     )
 }
