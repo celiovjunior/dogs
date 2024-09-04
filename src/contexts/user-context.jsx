@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 export function UserStorage({ children }) {
     const [data, setData] = useState(null)
     const [login, setLogin] = useState(null)
@@ -70,6 +69,7 @@ export function UserStorage({ children }) {
 
             if (!tokenRes.ok) throw new Error(`Error: ${tokenRes.statusText}`)
             const {token} = await tokenRes.json()
+        
             window.localStorage.setItem('token', token)
     
             await getUser(token)
