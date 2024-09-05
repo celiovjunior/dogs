@@ -5,6 +5,11 @@ import { LoginCreate } from "./login-create";
 import { LoginResetPassword } from "./login-reset-password";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user-context";
+import styled from "styled-components";
+
+const LoginDiv = styled.div``
+
+const StyledForms = styled.div``
 
 export function Login() {
     const { login } = useContext(UserContext)
@@ -12,13 +17,15 @@ export function Login() {
     if(login === true) return <Navigate to="/account" />
 
     return(
-        <div>
-            <Routes>
-                <Route path="/" element={<LoginForm />} />
-                <Route path="create" element={<LoginCreate />} />
-                <Route path="lost-password" element={<LoginLostPassword />} />
-                <Route path="reset-password" element={<LoginResetPassword />} />
-            </Routes>
-        </div>
+        <LoginDiv>
+            <StyledForms>
+                <Routes>
+                    <Route path="/" element={<LoginForm />} />
+                    <Route path="create" element={<LoginCreate />} />
+                    <Route path="lost-password" element={<LoginLostPassword />} />
+                    <Route path="reset-password" element={<LoginResetPassword />} />
+                </Routes>
+            </StyledForms>
+        </LoginDiv>
     )
 }
