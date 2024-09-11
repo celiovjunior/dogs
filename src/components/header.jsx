@@ -48,7 +48,7 @@ export function Header() {
                 </Link>
                 {data ? (
                     <StyledLink to="/account">
-                        {data.name}
+                        {data.username}
                         <img src={userSvg} alt="User link" />
                         <button onClick={userLogout}>Logout</button>
                     </StyledLink>
