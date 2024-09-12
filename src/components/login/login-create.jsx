@@ -5,6 +5,8 @@ import useForm from "../../hooks/useForm";
 import { USER_POST } from "../../api";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user-context";
+import UseFetch from "../../hooks/useFetch";
+import { Error } from "../error";
 
 const LoginCreateSection = styled.section`
 
@@ -16,6 +18,7 @@ export function LoginCreate() {
     const password = useForm();
 
     const {userLogin} = useContext(UserContext)
+    const {loading, error, request } = UseFetch();
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -25,7 +28,7 @@ export function LoginCreate() {
             password: password.value,
             // password_confirmation: password.value,
         })
-        const response = await fetch(url, options)
+        const { response } = await request(url, options)
         if (response.ok) userLogin(email.value, password.value)
         console.log(response)
     }
@@ -37,7 +40,13 @@ export function LoginCreate() {
                 <FormInput label="User" type="text" name="username" {...username} />
                 <FormInput label="Email" type="email" name="email" {...email}/>
                 <FormInput label="Password" type="password" name="password" {...password} />
-                <Button>Register</Button>
+                
+                {loading
+                ? (<Button disabled>Registering...</Button>) 
+                : (<Button>Register</Button>)}
+
+                <Error error={error} />
+                
             </form>
         </LoginCreateSection>
     )

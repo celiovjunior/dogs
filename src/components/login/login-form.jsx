@@ -47,7 +47,6 @@ const SignUp = styled.div`
     p {
         margin-top: 2rem;
         margin-bottom: 2rem;
-
     }
 `
 const SignUpButton = styled(Link)`
